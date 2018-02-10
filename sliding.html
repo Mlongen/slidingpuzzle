@@ -16,7 +16,10 @@
 		margin-top: 12%;
 		margin-bottom: auto;
 		flex-wrap: wrap;
-
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 
 	}
 	.pos11 {
@@ -58,39 +61,86 @@
 
 	}
 </style>
+
 </head>
 <body>
 
 <div id="main" class="container">
-		<button class="box pos11" id="1"><p>1</p></button>		
-		<button class="box pos12" id="2"><p>2</p></button>	
-		<button class="box pos13" id="3"><p>3</p></button>	
-		<button class="box pos21" id="4"><p>empty</p></button>	
-		<button class="box pos22" id="5"><p>5</p></button>	
-		<button class="box pos23" id="6"><p>6</p></button>	
-		<button class="box pos31" id="7"><p>7</p></button>	
-		<button class="box pos32" id="8"><p>8</p></button>	
-		<button class="box pos33 empty" id="9"><p>9</p></button>	
+		<button id ="1" class="box"><p>1</p></button>		
+		<button id ="2" class="box"><p>2</p></button>	
+		<button id ="3" class="box"><p>3</p></button>	
+		<button id ="4" class="box"><p>4</p></button>	
+		<button id ="5" class="box"><p>5</p></button>	
+		<button id ="6" class="box"><p>6</p></button>	
+		<button id ="7" class="box"><p>empty</p></button>	
+		<button id ="8" class="box"><p>8</p></button>	
+		<button id ="9" class="box"><p>9</p></button>	
 
 </div>
-
 <script type="text/javascript">
-		var block11 = $('.pos11').text();
-		var block12 = $('.pos12').text();
-		var block13 = $('.pos13').text();
-		var block21 = $('.pos21').text();
-		var block22 = $('.pos22').text();
-		var block23 = $('.pos23').text();
-		var block31 = $('.pos31').text();
-		var block32 = $('.pos32').text();
-		var block33 = $('.pos33').text();
-	$('.pos11').click(function() {
-		move11();
-	});
+	function refresh() {
+			block11 = $('.pos11').text();
+			block12 = $('.pos12').text();
+			block13 = $('.pos13').text();
+			block21 = $('.pos21').text();
+			block22 = $('.pos22').text();
+			block23 = $('.pos23').text();
+			block31 = $('.pos31').text();
+			block32 = $('.pos32').text();
+			block33 = $('.pos33').text();
+			$( ".pos11").unbind( "click" );
+			$( ".pos12").unbind( "click" );
+			$( ".pos13").unbind( "click" );
+			$( ".pos21").unbind( "click" );
+			$( ".pos22").unbind( "click" );
+			$( ".pos23").unbind( "click" );
+			$( ".pos31").unbind( "click" );
+			$( ".pos32").unbind( "click" );
+			$( ".pos33").unbind( "click" );
+			$('.pos11').click(function() {
+			move11();
+			});
+			$('.pos12').click(function() {
+			move12();
+			});
+			$('.pos13').click(function() {
+			move13();
+			});
+			$('.pos21').click(function() {
+			move21();
+			});
+			$('.pos22').click(function() {
+			move22();
+			});
+			$('.pos23').click(function() {
+			move23();
+			});
+			$('.pos31').click(function() {
+			move31();
+			});
+			$('.pos32').click(function() {
+			move32();
+			});
+			$('.pos33').click(function() {
+			move33();
+			});
+}
 
-	console.log(block33);
+
+
+
 </script>
 <script type="text/javascript">
+		$('#1').addClass('pos11');
+		$('#2').addClass('pos12');
+		$('#3').addClass('pos13');
+		$('#4').addClass('pos21');
+		$('#5').addClass('pos22');
+		$('#6').addClass('pos23');
+		$('#7').addClass('pos31');
+		$('#8').addClass('pos32');
+		$('#9').addClass('pos33');
+		refresh();
 	function move11() {
 		if (block12 == 'empty') {	
 			$('.pos11').addClass('temp');
@@ -99,14 +149,238 @@
 			$('.temp').addClass('pos12');
 			$('.pos11').removeClass('pos12');
 			$('.pos12').removeClass('temp');
+			refresh();
 		}
-		if (block21 == 'empty') {	
+		else if(block21 == 'empty') {	
 			$('.pos11').addClass('temp');
 			$('.pos21').addClass('pos11');
 			$('.temp').removeClass('pos11');
 			$('.temp').addClass('pos21');
 			$('.pos11').removeClass('pos21');
 			$('.pos21').removeClass('temp');
+			refresh();
+		}
+	}
+
+	function move12() {
+		if (block11 == 'empty') {	
+			$('.pos12').addClass('temp');
+			$('.pos11').addClass('pos12');
+			$('.temp').removeClass('pos12');
+			$('.temp').addClass('pos11');
+			$('.pos12').removeClass('pos11');
+			$('.pos11').removeClass('temp');
+			refresh();
+
+
+		}
+		if (block13 == 'empty') {	
+			$('.pos12').addClass('temp');
+			$('.pos13').addClass('pos12');
+			$('.temp').removeClass('pos12');
+			$('.temp').addClass('pos13');
+			$('.pos12').removeClass('pos13');
+			$('.pos13').removeClass('temp');
+			refresh()
+
+		}
+		if (block22 == 'empty') {	
+			$('.pos12').addClass('temp');
+			$('.pos22').addClass('pos12');
+			$('.temp').removeClass('pos12');
+			$('.temp').addClass('pos22');
+			$('.pos12').removeClass('pos22');
+			$('.pos22').removeClass('temp');
+			refresh()
+
+		}
+
+	}
+	function move13() {
+		if (block12 == 'empty') {	
+			$('.pos13').addClass('temp');
+			$('.pos12').addClass('pos13');
+			$('.temp').removeClass('pos13');
+			$('.temp').addClass('pos12');
+			$('.pos13').removeClass('pos12');
+			$('.pos12').removeClass('temp');
+			refresh();
+
+	}
+		if (block23 == 'empty') {	
+			$('.pos13').addClass('temp');
+			$('.pos23').addClass('pos13');
+			$('.temp').removeClass('pos13');
+			$('.temp').addClass('pos23');
+			$('.pos13').removeClass('pos23');
+			$('.pos23').removeClass('temp');
+			refresh();
+
+	}
+}
+	function move21() {
+		if (block11 == 'empty') {	
+			$('.pos21').addClass('temp');
+			$('.pos11').addClass('pos21');
+			$('.temp').removeClass('pos21');
+			$('.temp').addClass('pos11');
+			$('.pos21').removeClass('pos11');
+			$('.pos11').removeClass('temp');
+			refresh();
+		}
+		if (block31 == 'empty') {	
+			$('.pos21').addClass('temp');
+			$('.pos31').addClass('pos21');
+			$('.temp').removeClass('pos21');
+			$('.temp').addClass('pos31');
+			$('.pos21').removeClass('pos31');
+			$('.pos31').removeClass('temp');
+			refresh();
+		}
+		if (block22 == 'empty') {	
+			$('.pos21').addClass('temp');
+			$('.pos22').addClass('pos21');
+			$('.temp').removeClass('pos21');
+			$('.temp').addClass('pos22');
+			$('.pos21').removeClass('pos22');
+			$('.pos22').removeClass('temp');
+			refresh();
+		}
+	}
+	function move22() {
+		if (block21 == 'empty') {	
+			$('.pos22').addClass('temp');
+			$('.pos21').addClass('pos22');
+			$('.temp').removeClass('pos22');
+			$('.temp').addClass('pos21');
+			$('.pos22').removeClass('pos21');
+			$('.pos21').removeClass('temp');
+			refresh();
+		}
+		if (block12 == 'empty') {	
+			$('.pos22').addClass('temp');
+			$('.pos12').addClass('pos22');
+			$('.temp').removeClass('pos22');
+			$('.temp').addClass('pos12');
+			$('.pos22').removeClass('pos12');
+			$('.pos12').removeClass('temp');
+			refresh();
+		}
+		if (block23 == 'empty') {	
+			$('.pos22').addClass('temp');
+			$('.pos23').addClass('pos22');
+			$('.temp').removeClass('pos22');
+			$('.temp').addClass('pos23');
+			$('.pos22').removeClass('pos23');
+			$('.pos23').removeClass('temp');
+			refresh();
+		}
+		if (block32 == 'empty') {	
+			$('.pos22').addClass('temp');
+			$('.pos32').addClass('pos22');
+			$('.temp').removeClass('pos22');
+			$('.temp').addClass('pos32');
+			$('.pos22').removeClass('pos32');
+			$('.pos32').removeClass('temp');
+			refresh();
+		}
+	}
+		function move23() {
+		if (block13 == 'empty') {	
+			$('.pos23').addClass('temp');
+			$('.pos13').addClass('pos23');
+			$('.temp').removeClass('pos23');
+			$('.temp').addClass('pos13');
+			$('.pos23').removeClass('pos13');
+			$('.pos13').removeClass('temp');
+			refresh();
+		}
+		if (block22 == 'empty') {	
+			$('.pos23').addClass('temp');
+			$('.pos22').addClass('pos23');
+			$('.temp').removeClass('pos23');
+			$('.temp').addClass('pos22');
+			$('.pos23').removeClass('pos22');
+			$('.pos22').removeClass('temp');
+			refresh();
+		}
+		if (block33 == 'empty') {	
+			$('.pos23').addClass('temp');
+			$('.pos33').addClass('pos23');
+			$('.temp').removeClass('pos23');
+			$('.temp').addClass('pos33');
+			$('.pos23').removeClass('pos33');
+			$('.pos33').removeClass('temp');
+			refresh();
+		}
+	}
+		function move31() {
+		if (block21 == 'empty') {	
+			$('.pos31').addClass('temp');
+			$('.pos21').addClass('pos31');
+			$('.temp').removeClass('pos31');
+			$('.temp').addClass('pos21');
+			$('.pos31').removeClass('pos21');
+			$('.pos21').removeClass('temp');
+			refresh();
+		}
+		if (block32 == 'empty') {	
+			$('.pos31').addClass('temp');
+			$('.pos32').addClass('pos31');
+			$('.temp').removeClass('pos31');
+			$('.temp').addClass('pos32');
+			$('.pos31').removeClass('pos32');
+			$('.pos32').removeClass('temp');
+			refresh();
+		}
+	}
+		function move32() {
+		if (block31 == 'empty') {	
+			$('.pos32').addClass('temp');
+			$('.pos31').addClass('pos32');
+			$('.temp').removeClass('pos32');
+			$('.temp').addClass('pos31');
+			$('.pos32').removeClass('pos31');
+			$('.pos31').removeClass('temp');
+			refresh();
+		}
+		if (block33 == 'empty') {	
+			$('.pos32').addClass('temp');
+			$('.pos33').addClass('pos32');
+			$('.temp').removeClass('pos32');
+			$('.temp').addClass('pos33');
+			$('.pos32').removeClass('pos33');
+			$('.pos33').removeClass('temp');
+			refresh();
+		}
+		if (block22 == 'empty') {	
+			$('.pos32').addClass('temp');
+			$('.pos22').addClass('pos32');
+			$('.temp').removeClass('pos32');
+			$('.temp').addClass('pos22');
+			$('.pos32').removeClass('pos22');
+			$('.pos22').removeClass('temp');
+			refresh();
+		}
+	}
+		function move33() {
+		if (block23 == 'empty') {	
+			$('.pos33').addClass('temp');
+			$('.pos23').addClass('pos33');
+			$('.temp').removeClass('pos33');
+			$('.temp').addClass('pos23');
+			$('.pos33').removeClass('pos23');
+			$('.pos23').removeClass('temp');
+			refresh();
+		}
+		if (block32 == 'empty') {	
+			$('.pos33').addClass('temp');
+			$('.pos32').addClass('pos33');
+			$('.temp').removeClass('pos33');
+			$('.temp').addClass('pos32');
+			$('.pos33').removeClass('pos32');
+			$('.pos32').removeClass('temp');
+			refresh();
 		}
 	}
 </script>
